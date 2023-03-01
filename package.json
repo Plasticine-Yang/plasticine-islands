@@ -4,6 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "start:cli": "pnpm -C packages/cli start",
     "build:cli": "pnpm -C packages/cli build",
     "stub:cli": "pnpm -C packages/cli stub",
     "test": "vitest",
@@ -34,5 +35,8 @@
     "typescript": "^4.9.5",
     "unbuild": "^1.1.2",
     "vitest": "^0.28.5"
+  },
+  "dependencies": {
+    "@plasticine-islands/cli": "workspace:^0.0.0"
   }
 }

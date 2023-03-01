@@ -5,6 +5,9 @@
   "description": "cli of @plasticine-islands",
   "type": "module",
   "license": "MIT",
+  "bin": {
+    "plasticine-islands": "./bin/plasticine-islands.js"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -23,7 +26,11 @@
     "cli"
   ],
   "scripts": {
+    "start": "tsx src/index.ts",
     "build": "unbuild",
     "stub": "unbuild --stub"
+  },
+  "dependencies": {
+    "cac": "^6.7.14"
   }
 }

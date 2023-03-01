@@ -7,6 +7,7 @@ importers:
       '@changesets/cli': ^2.26.0
       '@commitlint/cli': ^17.4.4
       '@commitlint/config-conventional': ^17.4.4
+      '@plasticine-islands/cli': workspace:^0.0.0
       '@plasticine-yang/eslint-config-typescript': ^0.1.6
       '@types/node': ^18.14.1
       commitizen: ^4.3.0
@@ -20,6 +21,8 @@ importers:
       typescript: ^4.9.5
       unbuild: ^1.1.2
       vitest: ^0.28.5
+    dependencies:
+      '@plasticine-islands/cli': link:packages/cli
     devDependencies:
       '@changesets/cli': 2.26.0
       '@commitlint/cli': 17.4.4
@@ -38,8 +41,11 @@ importers:
       unbuild: 1.1.2
       vitest: 0.28.5
 
-  packages/demo:
-    specifiers: {}
+  packages/cli:
+    specifiers:
+      cac: ^6.7.14
+    dependencies:
+      cac: 6.7.14
 
 packages:
 
@@ -1914,7 +1920,6 @@ packages:
   /cac/6.7.14:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
     engines: {node: '>=8'}
-    dev: true
 
   /cacache/16.1.3:
     resolution: {integrity: sha512-/+Emcj9DAXxX4cwlLmRI9c166RuL3w30zp4R7Joiv2cQTtTtA+jeuCAjH3ZlGnYS3tKENSrKhAzVVP9GVyzeYQ==}
