@@ -31,6 +31,10 @@
     "stub": "unbuild --stub"
   },
   "dependencies": {
+    "@plasticine-islands/core": "workspace:*",
     "cac": "^6.7.14"
+  },
+  "devDependencies": {
+    "@plasticine-islands/types": "workspace:*"
   }
 }
