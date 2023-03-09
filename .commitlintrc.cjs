@@ -12,6 +12,6 @@ module.exports = {
     'subject-case': [2, 'never', ['upper-case']],
   },
   prompt: {
-    scopes: [...packages],
+    scopes: [...packages, 'playground'],
   },
 }

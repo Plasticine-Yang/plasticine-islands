@@ -1,0 +1,15 @@
+{
+  "name": "@plasticine-islands/playground",
+  "private": true,
+  "author": "Plasticine-Yang",
+  "description": "core of @plasticine-islands",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "plasticine-islands dev docs",
+    "build": "plasticine-islands build docs"
+  },
+  "dependencies": {
+    "@plasticine-islands/cli": "workspace:*"
+  }
+}
