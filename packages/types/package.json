@@ -1,0 +1,25 @@
+{
+  "name": "@plasticine-islands/types",
+  "version": "0.0.0",
+  "author": "Plasticine-Yang",
+  "description": "types of @plasticine-islands",
+  "type": "module",
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "require": "./src/index.ts",
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    }
+  },
+  "keywords": [
+    "islands",
+    "islands architecture",
+    "ssg",
+    "plasticine-islands",
+    "types"
+  ]
+}
