@@ -45,20 +45,30 @@ importers:
       cac: ^6.7.14
     dependencies:
       '@plasticine-islands/core': link:../core
-      cac: 6.7.14
-    devDependencies:
       '@plasticine-islands/types': link:../types
+      cac: 6.7.14
 
   packages/core:
+    specifiers:
+      '@plasticine-islands/types': workspace:*
+      '@plasticine-islands/vite-plugin-dev-server-html': workspace:*
+      vite: ^4.1.4
+    dependencies:
+      '@plasticine-islands/types': link:../types
+      '@plasticine-islands/vite-plugin-dev-server-html': link:../vite-plugin-dev-server-html
+      vite: 4.1.4
+
+  packages/types:
+    specifiers: {}
+
+  packages/vite-plugin-dev-server-html:
     specifiers:
       '@plasticine-islands/types': workspace:*
       vite: ^4.1.4
     dependencies:
       '@plasticine-islands/types': link:../types
+    devDependencies:
       vite: 4.1.4
-
-  packages/types:
-    specifiers: {}
 
   playground:
     specifiers:
@@ -5807,7 +5817,6 @@ packages:
       rollup: 3.17.2
     optionalDependencies:
       fsevents: 2.3.2
-    dev: false
 
   /vite/4.1.4_@types+node@18.14.1:
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}

@@ -1,0 +1,36 @@
+{
+  "name": "@plasticine-islands/vite-plugin-dev-server-html",
+  "version": "0.0.0",
+  "author": "Plasticine-Yang",
+  "description": "A vite plugin to load html for dev server.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "vite plugin",
+    "dev server plugin",
+    "load html"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "dependencies": {
+    "@plasticine-islands/types": "workspace:*"
+  },
+  "peerDependencies": {
+    "vite": "^4.1.4"
+  },
+  "devDependencies": {
+    "vite": "^4.1.4"
+  }
+}
