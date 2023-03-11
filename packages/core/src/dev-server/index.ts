@@ -1,6 +1,9 @@
 import { createServer as createViteServer } from 'vite'
 
 import type { CreateDevServerOptions } from '@plasticine-islands/types'
+import vitePluginDevServerHtml from '@plasticine-islands/vite-plugin-dev-server-html'
+
+import { DEV_SERVER_HTML_PATH } from '../constants'
 
 const defaultCreateDevServerOptions: CreateDevServerOptions = {
   root: process.cwd(),
@@ -11,5 +14,10 @@ export function createDevServer(options: CreateDevServerOptions = defaultCreateD
 
   return createViteServer({
     root,
+    plugins: [
+      vitePluginDevServerHtml({
+        htmlPath: DEV_SERVER_HTML_PATH,
+      }),
+    ],
   })
 }
