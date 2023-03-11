@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "start:cli": "pnpm -C packages/cli start",
+    "build": "pnpm build:cli & pnpm build:core",
     "build:cli": "pnpm -C packages/cli build",
     "build:core": "pnpm -C packages/core build",
+    "stub": "pnpm stub:cli & pnpm stub:core",
     "stub:cli": "pnpm -C packages/cli stub",
     "stub:core": "pnpm -C packages/core stub",
     "test": "vitest",

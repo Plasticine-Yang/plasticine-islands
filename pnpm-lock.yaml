@@ -7,7 +7,6 @@ importers:
       '@changesets/cli': ^2.26.0
       '@commitlint/cli': ^17.4.4
       '@commitlint/config-conventional': ^17.4.4
-      '@plasticine-islands/cli': workspace:^0.0.0
       '@plasticine-yang/eslint-config-typescript': ^0.1.6
       '@types/node': ^18.14.1
       commitizen: ^4.3.0
@@ -21,8 +20,6 @@ importers:
       typescript: ^4.9.5
       unbuild: ^1.1.2
       vitest: ^0.28.5
-    dependencies:
-      '@plasticine-islands/cli': link:packages/cli
     devDependencies:
       '@changesets/cli': 2.26.0
       '@commitlint/cli': 17.4.4
@@ -59,6 +56,15 @@ importers:
     dependencies:
       '@plasticine-islands/types': link:../types
       vite: 4.1.4
+
+  packages/types:
+    specifiers: {}
+
+  playground:
+    specifiers:
+      '@plasticine-islands/cli': workspace:*
+    dependencies:
+      '@plasticine-islands/cli': link:../packages/cli
 
 packages:
 
