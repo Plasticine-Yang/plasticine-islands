@@ -2,7 +2,8 @@
   "compilerOptions": {
     "module": "ESNext",
     "jsx": "react-jsx",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "esModuleInterop": true
   },
   "include": ["src", "bundless"]
 }
