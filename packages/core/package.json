@@ -5,14 +5,14 @@
   "description": "core of @plasticine-islands",
   "type": "module",
   "license": "MIT",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/main/index.cjs",
+  "module": "./dist/main/index.mjs",
+  "types": "./dist/main/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/main/index.cjs",
+      "import": "./dist/main/index.mjs",
+      "types": "./dist/main/index.d.ts"
     }
   },
   "keywords": [
@@ -27,8 +27,15 @@
     "stub": "unbuild --stub"
   },
   "dependencies": {
-    "@plasticine-islands/vite-plugin-dev-server-html": "workspace:*",
     "@plasticine-islands/types": "workspace:*",
+    "@plasticine-islands/vite-plugin-dev-server-html": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^3.1.0",
     "vite": "^4.1.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11"
   }
 }

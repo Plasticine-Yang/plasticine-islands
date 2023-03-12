@@ -1,6 +1,8 @@
 import { resolve } from 'path'
 
-import { PACKAGE_SRC_PATH } from './common'
+import { DIST_PATH } from './common'
 
 /** @description 开发环境服务器的 html 入口路径 */
-export const DEV_SERVER_HTML_PATH = resolve(PACKAGE_SRC_PATH, 'template/index.html')
+export const DEV_SERVER_HTML_PATH = resolve(DIST_PATH, 'bundless/template/index.html')
+
+export const CLIENT_ENTRY_PATH = resolve(DIST_PATH, 'bundless/runtime/client-entry.tsx')
