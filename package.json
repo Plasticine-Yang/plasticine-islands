@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "start:cli": "pnpm -C packages/cli start",
-    "build": "pnpm build:cli & pnpm build:core & pnpm build:vite-plugin-dev-server-html",
+    "build": "pnpm run --parallel build",
     "build:cli": "pnpm -C packages/cli build",
     "build:core": "pnpm -C packages/core build",
     "build:vite-plugin-dev-server-html": "pnpm -C packages/vite-plugin-dev-server-html build",
-    "stub": "pnpm stub:cli & pnpm stub:core & pnpm stub:vite-plugin-dev-server-html",
+    "stub": "pnpm run --parallel stub",
     "stub:cli": "pnpm -C packages/cli stub",
     "stub:core": "pnpm -C packages/core stub",
     "stub:vite-plugin-dev-server-html": "pnpm -C packages/vite-plugin-dev-server-html stub",
