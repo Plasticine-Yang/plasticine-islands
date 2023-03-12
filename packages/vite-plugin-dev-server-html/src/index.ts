@@ -1,4 +1,4 @@
-import { type Plugin } from 'vite'
+import { HtmlTagDescriptor, type Plugin } from 'vite'
 
 import { resolve } from 'path'
 import { readFile } from 'fs/promises'
@@ -16,7 +16,7 @@ const DEFAULT_OPTIONS: VitePluginDevServerHtmlOptions = {
  * @description 为 vite 开发环境服务器加载 html 作为入口
  */
 export default function vitePluginDevServerHtml(options: VitePluginDevServerHtmlOptions = DEFAULT_OPTIONS): Plugin {
-  const { htmlPath, loadDefaultHtmlOnError } = options
+  const { htmlPath, loadDefaultHtmlOnError, clintEntryPath } = options
 
   return {
     name: 'vite-plugin-dev-server-html',
@@ -44,6 +44,28 @@ export default function vitePluginDevServerHtml(options: VitePluginDevServerHtml
           res.setHeader('Content-Type', 'text/html')
           res.end(html)
         })
+      }
+    },
+    // 为 html 注入加载客户端运行时代码的 script 标签
+    transformIndexHtml(html) {
+      const tags: HtmlTagDescriptor[] = []
+
+      if (clintEntryPath !== undefined) {
+        const scriptTag: HtmlTagDescriptor = {
+          tag: 'script',
+          attrs: {
+            type: 'module',
+            src: `/@fs/${clintEntryPath}`,
+          },
+          injectTo: 'body',
+        }
+
+        tags.push(scriptTag)
+      }
+
+      return {
+        html,
+        tags,
       }
     },
   }
