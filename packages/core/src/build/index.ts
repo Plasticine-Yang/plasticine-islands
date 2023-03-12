@@ -2,14 +2,18 @@ import { resolve } from 'path'
 
 import type { OutputChunk } from 'rollup'
 
-import type { ServerBundleModule } from '@plasticine-islands/types'
+import type { BuildCommandOptions, ServerBundleModule } from '@plasticine-islands/types'
 
-import { SERVER_BUNDLE_NAME, SERVER_BUNDLE_PATH } from '../constants'
+import { CLIENT_BUNDLE_PATH, SERVER_BUNDLE_NAME, SERVER_BUNDLE_PATH } from '../constants'
 import { bundle } from './bundle'
 import { renderPage } from './render-page'
 
-export async function build(root: string) {
-  const [clientBundle] = await bundle(root)
+const defaultBuildCommandOptions: BuildCommandOptions = {
+  outdir: CLIENT_BUNDLE_PATH,
+}
+
+export async function build(root: string, options: BuildCommandOptions = defaultBuildCommandOptions) {
+  const [clientBundle] = await bundle(root, options)
 
   // 加载服务端构建产物中的 render 函数
   const serverBundleModulePath = resolve(root, SERVER_BUNDLE_PATH, SERVER_BUNDLE_NAME)
@@ -18,5 +22,5 @@ export async function build(root: string) {
   // 获取客户端产物的入口地址
   const clientEntryChunk = clientBundle.output.find((item) => item.type === 'chunk' && item.isEntry) as OutputChunk
 
-  renderPage(root, render, clientEntryChunk)
+  renderPage(root, render, clientEntryChunk, options)
 }
