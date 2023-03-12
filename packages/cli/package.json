@@ -26,7 +26,7 @@
     "cli"
   ],
   "scripts": {
-    "start": "tsx src/index.ts",
+    "start": "node dist/index.mjs",
     "build": "unbuild",
     "stub": "unbuild --stub"
   },
