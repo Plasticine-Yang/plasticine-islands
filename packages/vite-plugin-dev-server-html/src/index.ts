@@ -1,12 +1,10 @@
 import { type Plugin } from 'vite'
 
 import { resolve } from 'path'
-import { fileURLToPath } from 'url'
 import { readFile } from 'fs/promises'
 
 import type { VitePluginDevServerHtmlOptions } from '@plasticine-islands/types'
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const DEFAULT_HTML_PATH = resolve(__dirname, 'default.html')
 
 const DEFAULT_OPTIONS: VitePluginDevServerHtmlOptions = {
@@ -26,11 +24,14 @@ export default function vitePluginDevServerHtml(options: VitePluginDevServerHtml
     configureServer(server) {
       // 需要在 vite 内置的 middleware 运行完后再运行该 middleware
       return () => {
-        server.middlewares.use(async (_, res, next) => {
+        server.middlewares.use(async (req, res, next) => {
           let html: string
 
           try {
             html = await readFile(htmlPath, 'utf-8')
+
+            // 使用 vite 内置的 transform 处理 html，为其注入热更新相关代码
+            req.url && (html = await server.transformIndexHtml(req.url, html, req.originalUrl))
           } catch (error) {
             if (loadDefaultHtmlOnError) {
               html = await readFile(DEFAULT_HTML_PATH, 'utf-8')
