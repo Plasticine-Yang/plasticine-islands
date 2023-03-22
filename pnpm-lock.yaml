@@ -41,15 +41,20 @@ importers:
   packages/cli:
     specifiers:
       '@plasticine-islands/core': workspace:*
+      '@plasticine-islands/shared': workspace:*
       '@plasticine-islands/types': workspace:*
       cac: ^6.7.14
+      unconfig: ^0.3.7
     dependencies:
       '@plasticine-islands/core': link:../core
+      '@plasticine-islands/shared': link:../shared
       '@plasticine-islands/types': link:../types
       cac: 6.7.14
+      unconfig: 0.3.7
 
   packages/core:
     specifiers:
+      '@plasticine-islands/shared': workspace:*
       '@plasticine-islands/types': workspace:*
       '@plasticine-islands/vite-plugin-dev-server-html': workspace:*
       '@types/ejs': ^3.1.2
@@ -65,6 +70,7 @@ importers:
       rollup: ^3.19.1
       vite: ^4.1.4
     dependencies:
+      '@plasticine-islands/shared': link:../shared
       '@plasticine-islands/types': link:../types
       '@plasticine-islands/vite-plugin-dev-server-html': link:../vite-plugin-dev-server-html
       '@vitejs/plugin-react': 3.1.0_vite@4.1.4
@@ -119,7 +125,6 @@ packages:
 
   /@antfu/utils/0.5.2:
     resolution: {integrity: sha512-CQkeV+oJxUazwjlHD0/3ZD08QWKuGQkhnrKo3e6ly5pd48VUpXbb77q0xMU4+vc2CkJnDS02Eq/M9ugyX20XZA==}
-    dev: true
 
   /@babel/code-frame/7.18.6:
     resolution: {integrity: sha512-TDCmlK5eOvH+eH7cdAFlNXeVJqWIQ7gW9tY1GJIpUtFb6CmjVyq2VM3u71bOyR8CRihcCgMUYoDNyLXao3+70Q==}
@@ -2471,7 +2476,6 @@ packages:
 
   /defu/6.1.2:
     resolution: {integrity: sha512-+uO4+qr7msjNNWKYPHqN/3+Dx3NFkmIzayk2L1MyZQlvgZb/J1A0fo410dpKrN2SnqFjt8n4JL8fDJE0wIgjFQ==}
-    dev: true
 
   /delegates/1.0.0:
     resolution: {integrity: sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ==}
@@ -3799,7 +3803,6 @@ packages:
   /jiti/1.17.1:
     resolution: {integrity: sha512-NZIITw8uZQFuzQimqjUxIrIcEdxYDFIe/0xYfIlVXTkiBjjyBEvgasj5bb0/cHtPRD/NziPbT312sFrkI5ALpw==}
     hasBin: true
-    dev: true
 
   /js-sdsl/4.3.0:
     resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==}
@@ -5843,7 +5846,6 @@ packages:
       '@antfu/utils': 0.5.2
       defu: 6.1.2
       jiti: 1.17.1
-    dev: true
 
   /unique-filename/2.0.1:
     resolution: {integrity: sha512-ODWHtkkdx3IAR+veKxFV+VBkUMcN+FaqzUUd7IZzt+0zhDZFPFxhlqwPF3YQvMHx1TD0tdgYl+kuPnJ8E6ql7A==}
