@@ -3,21 +3,23 @@ import { build as viteBuild, type InlineConfig } from 'vite'
 import ora from 'ora'
 import type { RollupOutput } from 'rollup'
 
-import type { BuildCommandOptions } from '@plasticine-islands/types'
+import type { BuildConfig } from '@plasticine-islands/types'
+import { BASE_DIRECTORY } from '@plasticine-islands/shared'
 
-import { CLIENT_ENTRY_PATH, SERVER_BUNDLE_PATH, SERVER_ENTRY_PATH } from '../constants'
+import { CLIENT_ENTRY_PATH, CLIENT_BUNDLE_DIRECTORY_NAME, SERVER_ENTRY_PATH } from '../constants'
+import { join } from 'path'
 
 /**
  * @description 构建客户端和服务端产物
  * @param root 命令执行的目标路径
  * @returns [clientBundle, serverBundle]
  */
-export async function bundle(root: string, options: BuildCommandOptions) {
+export async function bundle(root: string, buildConfig: BuildConfig) {
   const spinner = ora('building client + server bundles...\n').start()
 
   try {
-    const clientViteConfig = resolveViteConfig(root, 'client', options)
-    const serverViteConfig = resolveViteConfig(root, 'server', options)
+    const clientViteConfig = resolveViteConfig(root, 'client', buildConfig)
+    const serverViteConfig = resolveViteConfig(root, 'server', buildConfig)
 
     const [clientBundle, serverBundle] = await Promise.all([viteBuild(clientViteConfig), viteBuild(serverViteConfig)])
     spinner.succeed('build client + server bundles successfully!')
@@ -29,15 +31,15 @@ export async function bundle(root: string, options: BuildCommandOptions) {
   }
 }
 
-function resolveViteConfig(root: string, target: 'client' | 'server', options: BuildCommandOptions): InlineConfig {
-  const { outdir } = options
+function resolveViteConfig(root: string, target: 'client' | 'server', buildConfig: BuildConfig): InlineConfig {
+  const { outDirectoryName = CLIENT_BUNDLE_DIRECTORY_NAME } = buildConfig
   const isServer = target === 'server'
 
   return {
     mode: 'production',
     root,
     build: {
-      outDir: isServer ? SERVER_BUNDLE_PATH : outdir,
+      outDir: isServer ? join(BASE_DIRECTORY, CLIENT_BUNDLE_DIRECTORY_NAME) : join(BASE_DIRECTORY, outDirectoryName),
       ssr: isServer ? true : false,
       rollupOptions: {
         input: isServer ? SERVER_ENTRY_PATH : CLIENT_ENTRY_PATH,

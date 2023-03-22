@@ -12,10 +12,10 @@ export default defineBuildConfig({
     },
   ],
   declaration: true,
+  outDir: './dist/main',
+  clean: true,
   rollup: {
     emitCJS: true,
     cjsBridge: true,
   },
-  outDir: './dist/main',
-  clean: true,
 })

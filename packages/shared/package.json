@@ -1,13 +1,10 @@
 {
-  "name": "@plasticine-islands/cli",
+  "name": "@plasticine-islands/shared",
   "version": "0.0.1",
   "author": "Plasticine-Yang",
-  "description": "cli of @plasticine-islands",
+  "description": "shared code of @plasticine-islands",
   "type": "module",
   "license": "MIT",
-  "bin": {
-    "plasticine-islands": "./bin/plasticine-islands.js"
-  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -23,18 +20,10 @@
     "islands architecture",
     "ssg",
     "plasticine-islands",
-    "cli"
+    "shared"
   ],
   "scripts": {
-    "start": "node dist/index.mjs",
     "build": "unbuild",
     "stub": "unbuild --stub"
-  },
-  "dependencies": {
-    "@plasticine-islands/core": "workspace:*",
-    "@plasticine-islands/shared": "workspace:*",
-    "@plasticine-islands/types": "workspace:*",
-    "cac": "^6.7.14",
-    "unconfig": "^0.3.7"
   }
 }

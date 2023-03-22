@@ -5,10 +5,16 @@ import type { OutputChunk } from 'rollup'
 import ejs from 'ejs'
 import ora from 'ora'
 
-import type { BuildCommandOptions, BuildHtmlEjsData, ServerRenderFunc } from '@plasticine-islands/types'
+import type { BuildConfig, BuildHtmlEjsData, ServerRenderFunc } from '@plasticine-islands/types'
 
+import { BASE_DIRECTORY } from '@plasticine-islands/shared'
 import { resolve } from 'path'
-import { BUILD_HTML_PATH, DEFAULT_BUILD_HTML_TITLE, SERVER_BUNDLE_PATH } from '../constants'
+import {
+  BUILD_HTML_PATH,
+  CLIENT_BUNDLE_DIRECTORY_NAME,
+  DEFAULT_BUILD_HTML_TITLE,
+  SERVER_BUNDLE_DIRECTORY_NAME,
+} from '../constants'
 
 const { ensureDir, readFile, remove, writeFile } = fsExtra
 
@@ -16,9 +22,9 @@ export async function renderPage(
   root: string,
   serverRender: ServerRenderFunc,
   clientEntryChunk: OutputChunk,
-  options: BuildCommandOptions,
+  buildConfig: BuildConfig,
 ) {
-  const { outdir } = options
+  const { outDirectoryName = CLIENT_BUNDLE_DIRECTORY_NAME } = buildConfig
   const spinner = ora('rendering page...\n').start()
 
   try {
@@ -31,11 +37,11 @@ export async function renderPage(
     } as BuildHtmlEjsData)
 
     // 将结果写入构建目录中
-    await ensureDir(resolve(root, outdir))
-    await writeFile(resolve(root, outdir, 'index.html'), html)
+    await ensureDir(resolve(root, BASE_DIRECTORY, outDirectoryName))
+    await writeFile(resolve(root, BASE_DIRECTORY, outDirectoryName, 'index.html'), html)
 
     // 移除服务端构建产物
-    await remove(resolve(root, SERVER_BUNDLE_PATH))
+    await remove(resolve(root, BASE_DIRECTORY, SERVER_BUNDLE_DIRECTORY_NAME))
 
     spinner.succeed('render page successfully!')
   } catch (error) {

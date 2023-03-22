@@ -1,8 +1,8 @@
 import { resolve } from 'path'
 import { TEMPLATES_PATH } from './common'
 
-export const CLIENT_BUNDLE_PATH = 'dist'
-export const SERVER_BUNDLE_PATH = '.temp'
+export const CLIENT_BUNDLE_DIRECTORY_NAME = 'dist'
+export const SERVER_BUNDLE_DIRECTORY_NAME = '.temp'
 export const SERVER_BUNDLE_NAME = 'server-entry.js'
 export const BUILD_HTML_PATH = resolve(TEMPLATES_PATH, 'build.html')
 

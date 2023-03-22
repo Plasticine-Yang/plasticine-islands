@@ -6,7 +6,7 @@ import { actionBuild, actionDev } from './actions'
 const cli = cac('plasticine-islands')
 
 // build 命令
-cli.command('build [root]', '构建产物').option('-o, --outdir <outdir>', 'Output directory').action(actionBuild)
+cli.command('build [root]', '构建产物').action(actionBuild)
 
 // dev 命令
 cli.command('dev [root]', '启动开发环境服务器').action(actionDev)
@@ -18,3 +18,5 @@ cli.help()
 cli.version(pkg.version)
 
 cli.parse()
+
+export * from './exports'

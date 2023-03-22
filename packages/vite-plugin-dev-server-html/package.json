@@ -5,14 +5,14 @@
   "description": "A vite plugin to load html for dev server.",
   "type": "module",
   "license": "MIT",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/main/index.cjs",
+  "module": "./dist/main/index.mjs",
+  "types": "./dist/main/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/main/index.cjs",
+      "import": "./dist/main/index.mjs",
+      "types": "./dist/main/index.d.ts"
     }
   },
   "keywords": [

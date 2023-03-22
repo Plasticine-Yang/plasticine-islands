@@ -5,13 +5,15 @@ export default defineBuildConfig({
     'src/index',
     {
       input: 'src/bundless',
-      outDir: 'dist',
+      outDir: './dist/bundless',
       builder: 'mkdist',
     },
   ],
+  declaration: true,
+  outDir: './dist/main',
+  clean: true,
   rollup: {
     emitCJS: true,
     cjsBridge: true,
   },
-  declaration: true,
 })
