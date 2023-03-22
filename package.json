@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start:cli": "pnpm -C packages/cli start",
-    "build": "pnpm run --parallel build",
+    "build": "pnpm run --filter !@plasticine-islands/playground --parallel build",
     "build:cli": "pnpm -C packages/cli build",
     "build:core": "pnpm -C packages/core build",
     "build:vite-plugin-dev-server-html": "pnpm -C packages/vite-plugin-dev-server-html build",
