@@ -6,7 +6,12 @@ import { build as viteBuild, type InlineConfig } from 'vite'
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
 import type { BuildConfig } from '@plasticine-islands/types'
 
-import { CLIENT_BUNDLE_DIRECTORY_NAME, CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from '../constants'
+import {
+  CLIENT_BUNDLE_DIRECTORY_NAME,
+  CLIENT_ENTRY_PATH,
+  SERVER_BUNDLE_DIRECTORY_NAME,
+  SERVER_ENTRY_PATH,
+} from '../constants'
 
 /**
  * @description 构建客户端和服务端产物
@@ -38,7 +43,7 @@ function resolveViteConfig(root: string, target: 'client' | 'server', buildConfi
     mode: 'production',
     root,
     build: {
-      outDir: isServer ? join(BASE_DIRECTORY, CLIENT_BUNDLE_DIRECTORY_NAME) : join(BASE_DIRECTORY, outDirectoryName),
+      outDir: isServer ? join(BASE_DIRECTORY, SERVER_BUNDLE_DIRECTORY_NAME) : join(BASE_DIRECTORY, outDirectoryName),
       ssr: isServer ? true : false,
       rollupOptions: {
         input: isServer ? SERVER_ENTRY_PATH : CLIENT_ENTRY_PATH,
