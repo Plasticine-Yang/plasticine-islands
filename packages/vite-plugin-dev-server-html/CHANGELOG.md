@@ -1,5 +1,13 @@
 # @plasticine-islands/vite-plugin-dev-server-html
 
+## 0.0.2
+
+### Patch Changes
+
+- refactor: 移除 build 命令的 option 参数
+- Updated dependencies
+  - @plasticine-islands/types@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
