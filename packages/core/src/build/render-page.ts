@@ -1,14 +1,12 @@
+import ejs from 'ejs'
 import fsExtra from 'fs-extra'
-
+import ora from 'ora'
+import { resolve } from 'path'
 import type { OutputChunk } from 'rollup'
 
-import ejs from 'ejs'
-import ora from 'ora'
-
+import { BASE_DIRECTORY } from '@plasticine-islands/shared'
 import type { BuildConfig, BuildHtmlEjsData, ServerRenderFunc } from '@plasticine-islands/types'
 
-import { BASE_DIRECTORY } from '@plasticine-islands/shared'
-import { resolve } from 'path'
 import {
   BUILD_HTML_PATH,
   CLIENT_BUNDLE_DIRECTORY_NAME,

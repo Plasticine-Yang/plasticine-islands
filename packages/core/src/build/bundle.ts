@@ -1,13 +1,12 @@
+import ora from 'ora'
+import { join } from 'path'
+import type { RollupOutput } from 'rollup'
 import { build as viteBuild, type InlineConfig } from 'vite'
 
-import ora from 'ora'
-import type { RollupOutput } from 'rollup'
-
-import type { BuildConfig } from '@plasticine-islands/types'
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
+import type { BuildConfig } from '@plasticine-islands/types'
 
-import { CLIENT_ENTRY_PATH, CLIENT_BUNDLE_DIRECTORY_NAME, SERVER_ENTRY_PATH } from '../constants'
-import { join } from 'path'
+import { CLIENT_BUNDLE_DIRECTORY_NAME, CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from '../constants'
 
 /**
  * @description 构建客户端和服务端产物

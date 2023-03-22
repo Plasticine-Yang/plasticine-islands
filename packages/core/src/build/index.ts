@@ -1,13 +1,12 @@
 import { resolve } from 'path'
-
 import type { OutputChunk } from 'rollup'
 
+import { BASE_DIRECTORY } from '@plasticine-islands/shared'
 import type { LoadedConfig, ServerBundleModule } from '@plasticine-islands/types'
 
 import { CLIENT_BUNDLE_DIRECTORY_NAME, SERVER_BUNDLE_NAME } from '../constants'
 import { bundle } from './bundle'
 import { renderPage } from './render-page'
-import { BASE_DIRECTORY } from '@plasticine-islands/shared'
 
 export async function build(root: string, loadedConfig: LoadedConfig) {
   const { build: buildConfig = {} } = loadedConfig.config
