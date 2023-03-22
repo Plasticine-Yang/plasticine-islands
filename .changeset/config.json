@@ -6,6 +6,7 @@
     [
       "@plasticine-islands/cli",
       "@plasticine-islands/core",
+      "@plasticine-islands/shared",
       "@plasticine-islands/types",
       "@plasticine-islands/vite-plugin-dev-server-html"
     ]
