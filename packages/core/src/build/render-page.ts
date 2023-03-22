@@ -1,4 +1,4 @@
-import { ensureDir, readFile, remove, writeFile } from 'fs-extra'
+import fsExtra from 'fs-extra'
 
 import type { OutputChunk } from 'rollup'
 
@@ -9,6 +9,8 @@ import type { BuildCommandOptions, BuildHtmlEjsData, ServerRenderFunc } from '@p
 
 import { resolve } from 'path'
 import { BUILD_HTML_PATH, DEFAULT_BUILD_HTML_TITLE, SERVER_BUNDLE_PATH } from '../constants'
+
+const { ensureDir, readFile, remove, writeFile } = fsExtra
 
 export async function renderPage(
   root: string,
