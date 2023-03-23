@@ -5,14 +5,9 @@ import { resolve } from 'path'
 import type { OutputChunk } from 'rollup'
 
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
-import type { BuildConfig, BuildHtmlEjsData, ServerRenderFunc } from '@plasticine-islands/types'
+import type { BuildHtmlEjsData, ResolvedConfig, ServerRenderFunc } from '@plasticine-islands/types'
 
-import {
-  BUILD_HTML_PATH,
-  CLIENT_BUNDLE_DIRECTORY_NAME,
-  DEFAULT_BUILD_HTML_TITLE,
-  SERVER_BUNDLE_DIRECTORY_NAME,
-} from '../constants'
+import { BUILD_HTML_PATH, DEFAULT_BUILD_HTML_TITLE, SERVER_BUNDLE_DIRECTORY_NAME } from '../constants'
 
 const { ensureDir, readFile, remove, writeFile } = fsExtra
 
@@ -20,9 +15,9 @@ export async function renderPage(
   root: string,
   serverRender: ServerRenderFunc,
   clientEntryChunk: OutputChunk,
-  buildConfig: BuildConfig,
+  buildConfig: ResolvedConfig['buildConfig'],
 ) {
-  const { outDirectoryName = CLIENT_BUNDLE_DIRECTORY_NAME } = buildConfig
+  const { outDirectoryName } = buildConfig
   const spinner = ora('rendering page...\n').start()
 
   try {

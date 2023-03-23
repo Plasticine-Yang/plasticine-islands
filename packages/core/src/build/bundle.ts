@@ -4,21 +4,16 @@ import type { RollupOutput } from 'rollup'
 import { build as viteBuild, type InlineConfig } from 'vite'
 
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
-import type { BuildConfig } from '@plasticine-islands/types'
+import type { BuildConfig, ResolvedConfig } from '@plasticine-islands/types'
 
-import {
-  CLIENT_BUNDLE_DIRECTORY_NAME,
-  CLIENT_ENTRY_PATH,
-  SERVER_BUNDLE_DIRECTORY_NAME,
-  SERVER_ENTRY_PATH,
-} from '../constants'
+import { CLIENT_ENTRY_PATH, SERVER_BUNDLE_DIRECTORY_NAME, SERVER_ENTRY_PATH } from '../constants'
 
 /**
  * @description 构建客户端和服务端产物
  * @param root 命令执行的目标路径
  * @returns [clientBundle, serverBundle]
  */
-export async function bundle(root: string, buildConfig: BuildConfig) {
+export async function bundle(root: string, buildConfig: ResolvedConfig['buildConfig']) {
   const spinner = ora('building client + server bundles...\n').start()
 
   try {
@@ -36,7 +31,7 @@ export async function bundle(root: string, buildConfig: BuildConfig) {
 }
 
 function resolveViteConfig(root: string, target: 'client' | 'server', buildConfig: BuildConfig): InlineConfig {
-  const { outDirectoryName = CLIENT_BUNDLE_DIRECTORY_NAME } = buildConfig
+  const { outDirectoryName } = buildConfig
   const isServer = target === 'server'
 
   return {
