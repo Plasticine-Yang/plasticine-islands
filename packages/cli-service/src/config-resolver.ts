@@ -1,10 +1,17 @@
+import { resolve } from 'path'
+
 import { loadConfig } from 'unconfig'
 
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
-import type { BuildConfig, PlasticineIslandsConfig, ResolvedConfig } from '@plasticine-islands/types'
+import type {
+  BuildConfig,
+  DeepRequired,
+  PlasticineIslandsConfig,
+  ResolvedConfig,
+  SiteConfig,
+} from '@plasticine-islands/types'
 
-import { resolve } from 'path'
-import { DEFAULT_OUT_DIRECTORY_NAME } from './constants'
+import { DEFAULT_OUT_DIRECTORY_NAME, DEFAULT_TITLE } from './constants'
 
 export async function resolveConfig(root: string): Promise<ResolvedConfig> {
   const loadedConfig = await loadConfig<PlasticineIslandsConfig | undefined>({
@@ -24,14 +31,23 @@ export async function resolveConfig(root: string): Promise<ResolvedConfig> {
     root,
     configPath: sources.at(0) ?? '',
     buildConfig: resolveBuildConfig(config),
+    siteConfig: resolveSiteConfig(config),
   }
 }
 
-function resolveBuildConfig(config: PlasticineIslandsConfig): BuildConfig {
+function resolveBuildConfig(config: PlasticineIslandsConfig): DeepRequired<BuildConfig> {
   const { outDirectoryName } = config.build ?? {}
 
   return {
     outDirectoryName: outDirectoryName ?? DEFAULT_OUT_DIRECTORY_NAME,
+  }
+}
+
+function resolveSiteConfig(config: PlasticineIslandsConfig): DeepRequired<SiteConfig> {
+  const { title } = config.siteConfig ?? {}
+
+  return {
+    title: title ?? DEFAULT_TITLE,
   }
 }
 
