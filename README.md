@@ -7,6 +7,7 @@
 - 开发环境下支持 SPA 客户端渲染
 - 生产环境下支持 SSG 方式构建
 - 支持解析配置文件 `plasticine-islands.config.ts` 和 `plasticine-islands.config.js`
+- 支持在前端应用中通过导入虚拟模块访问用户在配置文件中定义的 SiteConfig
 
 ## Usage
 
