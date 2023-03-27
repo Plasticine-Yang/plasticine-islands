@@ -12,9 +12,12 @@ importers:
       commitizen: ^4.3.0
       cz-git: ^1.5.0
       eslint: ^8.34.0
+      execa: ^7.1.1
+      glob: ^9.3.2
       husky: ^8.0.3
       lint-staged: ^13.1.2
       prettier: ^2.8.4
+      rimraf: ^4.4.1
       taze: ^0.8.5
       tsx: ^3.12.3
       typescript: ^4.9.5
@@ -29,9 +32,12 @@ importers:
       commitizen: 4.3.0
       cz-git: 1.5.0
       eslint: 8.34.0
+      execa: 7.1.1
+      glob: 9.3.2
       husky: 8.0.3
       lint-staged: 13.1.2
       prettier: 2.8.4
+      rimraf: 4.4.1
       taze: 0.8.5
       tsx: 3.12.3
       typescript: 4.9.5
@@ -40,16 +46,26 @@ importers:
 
   packages/cli:
     specifiers:
+      '@plasticine-islands/cli-service': workspace:*
       '@plasticine-islands/core': workspace:*
-      '@plasticine-islands/shared': workspace:*
       '@plasticine-islands/types': workspace:*
       cac: ^6.7.14
       unconfig: ^0.3.7
     dependencies:
+      '@plasticine-islands/cli-service': link:../cli-service
       '@plasticine-islands/core': link:../core
-      '@plasticine-islands/shared': link:../shared
       '@plasticine-islands/types': link:../types
       cac: 6.7.14
+      unconfig: 0.3.7
+
+  packages/cli-service:
+    specifiers:
+      '@plasticine-islands/shared': workspace:*
+      '@plasticine-islands/types': workspace:*
+      unconfig: ^0.3.7
+    dependencies:
+      '@plasticine-islands/shared': link:../shared
+      '@plasticine-islands/types': link:../types
       unconfig: 0.3.7
 
   packages/core:
@@ -87,6 +103,9 @@ importers:
       '@types/react-dom': 18.0.11
       rollup: 3.19.1
 
+  packages/shared:
+    specifiers: {}
+
   packages/types:
     specifiers: {}
 
@@ -102,12 +121,15 @@ importers:
   playground:
     specifiers:
       '@plasticine-islands/cli': workspace:*
+      '@plasticine-islands/cli-service': workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@plasticine-islands/cli': link:../packages/cli
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    devDependencies:
+      '@plasticine-islands/cli': link:../packages/cli
+      '@plasticine-islands/cli-service': link:../packages/cli-service
 
 packages:
 
@@ -2933,6 +2955,21 @@ packages:
       strip-final-newline: 3.0.0
     dev: true
 
+  /execa/7.1.1:
+    resolution: {integrity: sha512-wH0eMf/UXckdUYnO21+HDztteVv05rq2GXksxT4fCGeHkBhw1DROXh40wcjMcRqDOWE7iPJ4n3M7e2+YFP+76Q==}
+    engines: {node: ^14.18.0 || ^16.14.0 || >=18.0.0}
+    dependencies:
+      cross-spawn: 7.0.3
+      get-stream: 6.0.1
+      human-signals: 4.3.1
+      is-stream: 3.0.0
+      merge-stream: 2.0.0
+      npm-run-path: 5.1.0
+      onetime: 6.0.0
+      signal-exit: 3.0.7
+      strip-final-newline: 3.0.0
+    dev: true
+
   /expand-tilde/2.0.2:
     resolution: {integrity: sha512-A5EmesHW6rfnZ9ysHQjPdJRni0SRar0tjtG5MNtm9n5TUvsYU8oozprtRD4AqHxcZWWlVuAmQo2nWKfN9oyjTw==}
     engines: {node: '>=0.10.0'}
@@ -3246,6 +3283,16 @@ packages:
       once: 1.4.0
     dev: true
 
+  /glob/9.3.2:
+    resolution: {integrity: sha512-BTv/JhKXFEHsErMte/AnfiSv8yYOLLiyH2lTg8vn02O21zWFgHPTfxtgn1QRe7NRgggUhC8hacR2Re94svHqeA==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      fs.realpath: 1.0.0
+      minimatch: 7.4.3
+      minipass: 4.2.5
+      path-scurry: 1.6.3
+    dev: true
+
   /global-dirs/0.1.1:
     resolution: {integrity: sha512-NknMLn7F2J7aflwFOlGdNIuCDpN3VGoSoB+aap3KABFWbHVn1TCgFC+np23J8W2BiZbjfEw3BFBycSMv1AFblg==}
     engines: {node: '>=4'}
@@ -3443,6 +3490,11 @@ packages:
   /human-signals/3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
     engines: {node: '>=12.20.0'}
+    dev: true
+
+  /human-signals/4.3.1:
+    resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
+    engines: {node: '>=14.18.0'}
     dev: true
 
   /humanize-ms/1.2.1:
@@ -4248,6 +4300,13 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /minimatch/7.4.3:
+    resolution: {integrity: sha512-5UB4yYusDtkRPbRiy1cqZ1IpGNcJCGlEMG17RKzPddpyiPKoCdwohbED8g4QXT0ewCt8LTkQXuljsUfQ3FKM4A==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimist-options/4.1.0:
     resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==}
     engines: {node: '>= 6'}
@@ -4320,6 +4379,11 @@ packages:
 
   /minipass/4.2.1:
     resolution: {integrity: sha512-KS4CHIsDfOZetnT+u6fwxyFADXLamtkPxkGScmmtTW//MlRrImV+LtbmbJpLQ86Hw7km/utbfEfndhGBrfwvlA==}
+    engines: {node: '>=8'}
+    dev: true
+
+  /minipass/4.2.5:
+    resolution: {integrity: sha512-+yQl7SX3bIT83Lhb4BVorMAHVuqsskxRdlmO9kTpyukp8vsm2Sn/fUOV9xlnG8/a5JsypJzap21lz/y3FBMJ8Q==}
     engines: {node: '>=8'}
     dev: true
 
@@ -4809,6 +4873,14 @@ packages:
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
+  /path-scurry/1.6.3:
+    resolution: {integrity: sha512-RAmB+n30SlN+HnNx6EbcpoDy9nwdpcGPnEKrJnu6GZoDWBdIjo1UQMVtW2ybtC7LC2oKLcMq8y5g8WnKLiod9g==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      lru-cache: 7.17.0
+      minipass: 4.2.5
+    dev: true
+
   /path-type/4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
@@ -5178,6 +5250,14 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rimraf/4.4.1:
+    resolution: {integrity: sha512-Gk8NlF062+T9CqNGn6h4tls3k6T1+/nXdOcSZVikNVtlRdYpA7wRJJMoXmuvOnLW844rPjdQ7JgXCYM6PPC/og==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      glob: 9.3.2
     dev: true
 
   /rollup-plugin-dts/5.2.0_h4kaxwm6ctjivrsm4cpxaz7nqu:
