@@ -1,24 +1,26 @@
-import ora from 'ora'
 import { join } from 'path'
+
+import ora from 'ora'
 import type { RollupOutput } from 'rollup'
 import { build as viteBuild, type InlineConfig } from 'vite'
 
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
-import type { BuildConfig, ResolvedConfig } from '@plasticine-islands/types'
+import type { ResolvedConfig } from '@plasticine-islands/types'
 
 import { CLIENT_ENTRY_PATH, SERVER_BUNDLE_DIRECTORY_NAME, SERVER_ENTRY_PATH } from '../constants'
+import { resolveVitePlugins } from '../helpers'
 
 /**
  * @description 构建客户端和服务端产物
  * @param root 命令执行的目标路径
  * @returns [clientBundle, serverBundle]
  */
-export async function bundle(root: string, buildConfig: ResolvedConfig['buildConfig']) {
+export async function bundle(resolvedConfig: ResolvedConfig) {
   const spinner = ora('building client + server bundles...\n').start()
 
   try {
-    const clientViteConfig = resolveViteConfig(root, 'client', buildConfig)
-    const serverViteConfig = resolveViteConfig(root, 'server', buildConfig)
+    const clientViteConfig = resolveViteConfig('client', resolvedConfig)
+    const serverViteConfig = resolveViteConfig('server', resolvedConfig)
 
     const [clientBundle, serverBundle] = await Promise.all([viteBuild(clientViteConfig), viteBuild(serverViteConfig)])
     spinner.succeed('build client + server bundles successfully!')
@@ -30,7 +32,8 @@ export async function bundle(root: string, buildConfig: ResolvedConfig['buildCon
   }
 }
 
-function resolveViteConfig(root: string, target: 'client' | 'server', buildConfig: BuildConfig): InlineConfig {
+function resolveViteConfig(target: 'client' | 'server', resolvedConfig: ResolvedConfig): InlineConfig {
+  const { root, buildConfig } = resolvedConfig
   const { outDirectoryName } = buildConfig
   const isServer = target === 'server'
 
@@ -47,5 +50,6 @@ function resolveViteConfig(root: string, target: 'client' | 'server', buildConfi
         },
       },
     },
+    plugins: resolveVitePlugins(resolvedConfig),
   }
 }

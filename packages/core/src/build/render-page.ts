@@ -1,7 +1,8 @@
+import { resolve } from 'path'
+
 import ejs from 'ejs'
 import fsExtra from 'fs-extra'
 import ora from 'ora'
-import { resolve } from 'path'
 import type { OutputChunk } from 'rollup'
 
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
@@ -11,12 +12,20 @@ import { BUILD_HTML_PATH, DEFAULT_BUILD_HTML_TITLE, SERVER_BUNDLE_DIRECTORY_NAME
 
 const { ensureDir, readFile, remove, writeFile } = fsExtra
 
-export async function renderPage(
-  root: string,
-  serverRender: ServerRenderFunc,
-  clientEntryChunk: OutputChunk,
-  buildConfig: ResolvedConfig['buildConfig'],
-) {
+interface RenderPageOptions {
+  /** @description 用户定义在配置文件中定义的配置 */
+  resolvedConfig: ResolvedConfig
+
+  /** @description 客户端入口 bundle 后的 chunk */
+  clientEntryChunk: OutputChunk
+
+  /** @description 服务端渲染函数 - 用于将 React 组件渲染成 html 字符串 */
+  serverRender: ServerRenderFunc
+}
+
+export async function renderPage(options: RenderPageOptions) {
+  const { resolvedConfig, clientEntryChunk, serverRender } = options
+  const { root, buildConfig } = resolvedConfig
   const { outDirectoryName } = buildConfig
   const spinner = ora('rendering page...\n').start()
 
