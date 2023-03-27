@@ -10,8 +10,11 @@
     "build": "plasticine-islands build docs"
   },
   "dependencies": {
-    "@plasticine-islands/cli": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@plasticine-islands/cli": "workspace:*",
+    "@plasticine-islands/cli-service": "workspace:*"
   }
 }

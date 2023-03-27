@@ -10,12 +10,10 @@
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.mjs"
     }
   },
   "keywords": [
@@ -31,8 +29,8 @@
     "stub": "unbuild --stub"
   },
   "dependencies": {
+    "@plasticine-islands/cli-service": "workspace:*",
     "@plasticine-islands/core": "workspace:*",
-    "@plasticine-islands/shared": "workspace:*",
     "@plasticine-islands/types": "workspace:*",
     "cac": "^6.7.14",
     "unconfig": "^0.3.7"

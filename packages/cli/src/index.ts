@@ -18,5 +18,3 @@ cli.help()
 cli.version(pkg.version)
 
 cli.parse()
-
-export * from './exports'

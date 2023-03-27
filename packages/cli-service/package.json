@@ -1,0 +1,34 @@
+{
+  "name": "@plasticine-islands/cli-service",
+  "version": "0.0.2",
+  "author": "Plasticine-Yang",
+  "description": "cli service of @plasticine-islands",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "islands",
+    "islands architecture",
+    "ssg",
+    "plasticine-islands",
+    "cli-service"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "dependencies": {
+    "unconfig": "^0.3.7",
+    "@plasticine-islands/shared": "workspace:*",
+    "@plasticine-islands/types": "workspace:*"
+  }
+}
