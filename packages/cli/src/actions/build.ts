@@ -2,7 +2,6 @@ import { resolve } from 'path'
 
 import { build } from '@plasticine-islands/core'
 import type { ActionBuildFunc } from '@plasticine-islands/types'
-
 import { resolveConfig } from '@plasticine-islands/cli-service'
 
 export const actionBuild: ActionBuildFunc = async (root) => {
