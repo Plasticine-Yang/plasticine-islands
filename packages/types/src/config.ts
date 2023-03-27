@@ -8,8 +8,20 @@ export interface BuildConfig {
   outDirectoryName: string
 }
 
+export interface SiteConfig {
+  /**
+   * @description 网站标题
+   * @default plasticine-islands
+   */
+  title?: string
+}
+
 export interface PlasticineIslandsConfig {
+  /** @description build 命令相关配置 */
   build?: DeepPartial<BuildConfig>
+
+  /** @description 站点配置 */
+  siteConfig?: DeepPartial<SiteConfig>
 }
 
 export interface ResolvedConfig {
@@ -21,4 +33,7 @@ export interface ResolvedConfig {
 
   /** @description build 命令相关配置 */
   buildConfig: DeepRequired<BuildConfig>
+
+  /** @description 站点配置 - 会暴露给前端应用 */
+  siteConfig: DeepRequired<SiteConfig>
 }
