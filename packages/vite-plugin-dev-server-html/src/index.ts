@@ -1,7 +1,7 @@
-import { HtmlTagDescriptor, type Plugin } from 'vite'
+import type { HtmlTagDescriptor, Plugin } from 'vite'
 
-import { resolve } from 'path'
 import { readFile } from 'fs/promises'
+import { resolve } from 'path'
 
 import type { VitePluginDevServerHtmlOptions } from '@plasticine-islands/types'
 
