@@ -1,4 +1,4 @@
-import { defineConfig } from '@plasticine-islands/cli'
+import { defineConfig } from '@plasticine-islands/cli-service'
 
 export default defineConfig({
   build: {

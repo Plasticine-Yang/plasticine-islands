@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "plasticine-islands dev docs",
-    "build": "plasticine-islands build docs"
+    "build": "plasticine-islands build docs",
+    "preview": "serve docs/.plasticine-islands/dist"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@plasticine-islands/cli": "workspace:*",
-    "@plasticine-islands/cli-service": "workspace:*"
+    "@plasticine-islands/cli-service": "workspace:*",
+    "serve": "^14.2.0"
   }
 }
