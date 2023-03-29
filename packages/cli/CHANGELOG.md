@@ -1,5 +1,14 @@
 # @plasticine-islands/cli
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [be8324e]
+  - @plasticine-islands/cli-service@0.0.3
+  - @plasticine-islands/types@0.0.3
+  - @plasticine-islands/core@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

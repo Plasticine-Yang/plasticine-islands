@@ -1,5 +1,12 @@
 # @plasticine-islands/types
 
+## 0.0.3
+
+### Patch Changes
+
+- 6a94c5e: feat(types): 新增工具类型 - DeepPartial 和 DeepRequired
+- be8324e: feat(types): feat(types): 增加 SiteConfig 类型, 用于配置前端应用的展示
+
 ## 0.0.2
 
 ### Patch Changes

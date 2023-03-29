@@ -1,6 +1,6 @@
 {
   "name": "@plasticine-islands/vite-plugin-plasticine-islands-site-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Plasticine-Yang",
   "description": "An internal vite plugin to supply virtual module of site configuration for @plasticine-islands packages.",
   "type": "module",

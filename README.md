@@ -8,6 +8,7 @@
 - 生产环境下支持 SSG 方式构建
 - 支持解析配置文件 `plasticine-islands.config.ts` 和 `plasticine-islands.config.js`
 - 支持在前端应用中通过导入虚拟模块访问用户在配置文件中定义的 SiteConfig
+- 配置文件热更新
 
 ## Usage
 

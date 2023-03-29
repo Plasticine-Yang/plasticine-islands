@@ -1,6 +1,6 @@
 {
   "name": "@plasticine-islands/cli-service",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Plasticine-Yang",
   "description": "cli service of @plasticine-islands",
   "type": "module",

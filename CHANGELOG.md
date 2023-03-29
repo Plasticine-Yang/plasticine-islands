@@ -1,5 +1,16 @@
 # plasticine-islands
 
+## 0.0.3
+
+### Features
+
+- feat: 支持以虚拟模块的方式让前端应用使用 SiteConfig 的数据
+- feat: 配置文件热更新
+
+### Fix
+
+- fix: 单独导出 defineConfig, 解决无限死循环执行 build action 的问题
+
 ## 0.0.2
 
 ### Features
