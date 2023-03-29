@@ -120,6 +120,17 @@ importers:
     devDependencies:
       vite: 4.1.4
 
+  packages/vite-plugin-plasticine-islands-site-config:
+    specifiers:
+      '@plasticine-islands/types': workspace:*
+      chalk: ^5.2.0
+      vite: ^4.1.4
+    dependencies:
+      '@plasticine-islands/types': link:../types
+      chalk: 5.2.0
+    devDependencies:
+      vite: 4.1.4
+
   packages/vite-plugin-site-config:
     specifiers:
       '@plasticine-islands/types': workspace:*

@@ -29,7 +29,7 @@ export interface ResolvedConfig {
   root: string
 
   /** @description 配置文件的路径 */
-  configPath: string
+  configFilePath: string
 
   /** @description build 命令相关配置 */
   buildConfig: DeepRequired<BuildConfig>

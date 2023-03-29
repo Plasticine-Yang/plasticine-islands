@@ -29,7 +29,7 @@ export async function resolveConfig(root: string): Promise<ResolvedConfig> {
 
   return {
     root,
-    configPath: sources.at(0) ?? '',
+    configFilePath: sources.at(0) ?? '',
     buildConfig: resolveBuildConfig(config),
     siteConfig: resolveSiteConfig(config),
   }
