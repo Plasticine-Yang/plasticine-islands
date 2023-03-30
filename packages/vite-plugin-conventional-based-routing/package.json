@@ -1,0 +1,37 @@
+{
+  "name": "@plasticine-islands/vite-plugin-conventional-based-routing",
+  "version": "0.0.3",
+  "author": "Plasticine-Yang",
+  "description": "An internal vite plugin to supply virtual module of conventional-based routes for @plasticine-islands packages.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "vite plugin",
+    "conventional-based routing"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "dependencies": {
+    "@plasticine-islands/types": "workspace:*",
+    "@plasticine-islands/shared": "workspace:*",
+    "fast-glob": "^3.2.12"
+  },
+  "peerDependencies": {
+    "vite": "^4.1.4"
+  },
+  "devDependencies": {
+    "vite": "^4.1.4"
+  }
+}
