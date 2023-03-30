@@ -1,8 +1,9 @@
+import { relative } from 'path'
+
 import chalk from 'chalk'
 import type { Plugin } from 'vite'
 
 import type { VitePluginPlasticineIslandsSiteConfigOptions } from '@plasticine-islands/types'
-import { relative } from 'path'
 
 const virtualModuleId = 'virtual:plasticine-islands-site-config'
 const resolvedVirtualModuleId = '\0' + virtualModuleId

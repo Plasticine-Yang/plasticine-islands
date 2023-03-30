@@ -16,9 +16,7 @@
     }
   },
   "keywords": [
-    "vite plugin",
-    "dev server plugin",
-    "load html"
+    "vite plugin"
   ],
   "scripts": {
     "build": "unbuild",
