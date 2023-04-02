@@ -31,6 +31,7 @@
     "@plasticine-islands/types": "workspace:*",
     "@plasticine-islands/vite-plugin-dev-server-html": "workspace:*",
     "@plasticine-islands/vite-plugin-plasticine-islands-site-config": "workspace:*",
+    "@plasticine-islands/vite-plugin-conventional-based-routing": "workspace:*",
     "@vitejs/plugin-react": "^3.1.0",
     "ejs": "^3.1.8",
     "fs-extra": "^11.1.0",

@@ -19,6 +19,7 @@
     "stub:shared": "pnpm -C packages/shared stub",
     "stub:vite-plugin-dev-server-html": "pnpm -C packages/vite-plugin-dev-server-html stub",
     "stub:vite-plugin-plasticine-islands-site-config": "pnpm -C packages/vite-plugin-plasticine-islands-site-config stub",
+    "stub:vite-plugin-conventional-based-routing": "pnpm -C packages/vite-plugin-conventional-based-routing stub",
     "test": "vitest",
     "test:u": "vitest -u",
     "play:dev": "pnpm -C playground dev",

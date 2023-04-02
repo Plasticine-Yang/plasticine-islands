@@ -16,11 +16,19 @@ export default function vitePluginPlasticineIslandsSiteConfig(
 
   return {
     name: 'plasticine-islands-site-config',
+
+    config() {
+      return {
+        root: 'fake-root',
+      }
+    },
+
     resolveId(id) {
       if (id === virtualModuleId) {
         return resolvedVirtualModuleId
       }
     },
+
     load(id) {
       if (id === resolvedVirtualModuleId) {
         return `export default ${JSON.stringify(siteConfig)}`

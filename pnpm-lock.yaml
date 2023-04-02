@@ -72,6 +72,7 @@ importers:
     specifiers:
       '@plasticine-islands/shared': workspace:*
       '@plasticine-islands/types': workspace:*
+      '@plasticine-islands/vite-plugin-conventional-based-routing': workspace:*
       '@plasticine-islands/vite-plugin-dev-server-html': workspace:*
       '@plasticine-islands/vite-plugin-plasticine-islands-site-config': workspace:*
       '@types/ejs': ^3.1.2
@@ -90,6 +91,7 @@ importers:
     dependencies:
       '@plasticine-islands/shared': link:../shared
       '@plasticine-islands/types': link:../types
+      '@plasticine-islands/vite-plugin-conventional-based-routing': link:../vite-plugin-conventional-based-routing
       '@plasticine-islands/vite-plugin-dev-server-html': link:../vite-plugin-dev-server-html
       '@plasticine-islands/vite-plugin-plasticine-islands-site-config': link:../vite-plugin-plasticine-islands-site-config
       '@vitejs/plugin-react': 3.1.0_vite@4.1.4
@@ -150,6 +152,8 @@ importers:
     specifiers:
       '@plasticine-islands/cli': workspace:*
       '@plasticine-islands/cli-service': workspace:*
+      '@types/react': ^18.0.28
+      '@types/react-dom': ^18.0.11
       react: ^18.2.0
       react-dom: ^18.2.0
       serve: ^14.2.0
@@ -159,6 +163,8 @@ importers:
     devDependencies:
       '@plasticine-islands/cli': link:../packages/cli
       '@plasticine-islands/cli-service': link:../packages/cli-service
+      '@types/react': 18.0.28
+      '@types/react-dom': 18.0.11
       serve: 14.2.0
 
 packages:

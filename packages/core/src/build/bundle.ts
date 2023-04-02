@@ -50,6 +50,6 @@ function resolveViteConfig(target: 'client' | 'server', resolvedConfig: Resolved
         },
       },
     },
-    plugins: resolveVitePlugins(resolvedConfig),
+    plugins: resolveVitePlugins({ resolvedConfig }),
   }
 }

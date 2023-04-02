@@ -1,5 +1,6 @@
-import fg from 'fast-glob'
 import { relative } from 'path'
+
+import fg from 'fast-glob'
 import { normalizePath } from 'vite'
 
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
@@ -30,7 +31,7 @@ export class ConventionalBasedRoutingService {
       const fileRelativePath = normalizePath(relative(this.dirToScan, fileAbsolutePath))
 
       // 将文件相对路径转换成路由路径
-      const routePath = this.normalizeRoutePath(fileRelativePath)
+      const routePath = normalizeRoutePath(fileRelativePath)
 
       this.routeMetaList.push({
         routePath,
@@ -39,18 +40,46 @@ export class ConventionalBasedRoutingService {
     }
   }
 
-  private normalizeRoutePath(rawRoutePath: string) {
-    const handledRoutePath = rawRoutePath
-      // 去除文件名后缀 - e.g. index.tsx -> index
-      .replace(/\.(.*)?$/, '')
-      // 将 index 或 /index 移除
-      .replace(/\/?index$/, '')
-
-    // 确保路由路径是以 `/` 开头
-    return handledRoutePath.startsWith('/') ? handledRoutePath : `/${handledRoutePath}`
-  }
-
   public getRouteMetaList() {
     return this.routeMetaList
   }
+
+  /**
+   * @description 生成 react-router-dom 所需的 routes 数组代码
+   */
+  public generateRoutesCode() {
+    const _generateRoutesCode = () => {
+      return this.routeMetaList
+        .map((routeMeta: RouteMeta) => {
+          const { fileAbsolutePath, routePath } = routeMeta
+
+          return `
+{
+  path: '${routePath}',
+  lazy: async () => ({
+    Component: (await import('${fileAbsolutePath}')).default
+  })
+}
+      `.trim()
+        })
+        .join(',')
+    }
+
+    const code = `
+export const routes = [${_generateRoutesCode()}]
+  `.trim()
+
+    return code
+  }
+}
+
+function normalizeRoutePath(rawRoutePath: string) {
+  const handledRoutePath = rawRoutePath
+    // 去除文件名后缀 - e.g. index.tsx -> index
+    .replace(/\.(.*)?$/, '')
+    // 将 index 或 /index 移除
+    .replace(/\/?index$/, '')
+
+  // 确保路由路径是以 `/` 开头
+  return handledRoutePath.startsWith('/') ? handledRoutePath : `/${handledRoutePath}`
 }
