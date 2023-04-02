@@ -17,6 +17,8 @@
   "devDependencies": {
     "@plasticine-islands/cli": "workspace:*",
     "@plasticine-islands/cli-service": "workspace:*",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "serve": "^14.2.0"
   }
 }
