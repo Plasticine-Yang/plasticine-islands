@@ -5,6 +5,7 @@ import { loadConfig } from 'unconfig'
 import { BASE_DIRECTORY } from '@plasticine-islands/shared'
 import type {
   BuildConfig,
+  CliCommand,
   DeepRequired,
   PlasticineIslandsConfig,
   ResolvedConfig,
@@ -13,7 +14,7 @@ import type {
 
 import { DEFAULT_OUT_DIRECTORY_NAME, DEFAULT_TITLE } from './constants'
 
-export async function resolveConfig(root: string): Promise<ResolvedConfig> {
+export async function resolveConfig(root: string, command: CliCommand): Promise<ResolvedConfig> {
   const loadedConfig = await loadConfig<PlasticineIslandsConfig | undefined>({
     sources: [
       {
@@ -29,6 +30,7 @@ export async function resolveConfig(root: string): Promise<ResolvedConfig> {
 
   return {
     root,
+    command,
     configFilePath: sources.at(0) ?? '',
     buildConfig: resolveBuildConfig(config),
     siteConfig: resolveSiteConfig(config),

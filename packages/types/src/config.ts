@@ -1,4 +1,5 @@
-import { DeepPartial, DeepRequired } from './utils'
+import { CliCommand } from './cli'
+import type { DeepPartial, DeepRequired } from './utils'
 
 export interface BuildConfig {
   /**
@@ -25,6 +26,8 @@ export interface PlasticineIslandsConfig {
 }
 
 export interface ResolvedConfig {
+  command: CliCommand
+
   /** @description 执行 cli 命令时指定的 root 目录 */
   root: string
 

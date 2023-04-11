@@ -3,7 +3,7 @@ import { relative } from 'path'
 import chalk from 'chalk'
 import type { Plugin } from 'vite'
 
-import type { VitePluginPlasticineIslandsSiteConfigOptions } from '@plasticine-islands/types'
+import { CliCommand, type VitePluginPlasticineIslandsSiteConfigOptions } from '@plasticine-islands/types'
 
 const virtualModuleId = 'virtual:plasticine-islands-site-config'
 const resolvedVirtualModuleId = '\0' + virtualModuleId
@@ -12,14 +12,14 @@ export default function vitePluginPlasticineIslandsSiteConfig(
   options: VitePluginPlasticineIslandsSiteConfigOptions,
 ): Plugin {
   const { resolvedConfig, onDevServerRestart } = options
-  const { root, siteConfig, configFilePath } = resolvedConfig
+  const { root, command, siteConfig, configFilePath } = resolvedConfig
 
   return {
     name: 'plasticine-islands-site-config',
 
     config() {
       return {
-        root: 'fake-root',
+        root: command === CliCommand.Dev ? '__PLASTICINE_DEV_SERVER_ROOT__' : root,
       }
     },
 
