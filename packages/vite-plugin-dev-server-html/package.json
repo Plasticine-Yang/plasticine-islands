@@ -4,14 +4,17 @@
   "author": "Plasticine-Yang",
   "description": "A vite plugin to load html for dev server.",
   "type": "module",
+  "files": [
+    "./dist"
+  ],
   "license": "MIT",
   "main": "./dist/main/index.cjs",
-  "module": "./dist/main/index.mjs",
+  "module": "./dist/main/index.js",
   "types": "./dist/main/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/main/index.cjs",
-      "import": "./dist/main/index.mjs",
+      "import": "./dist/main/index.js",
       "types": "./dist/main/index.d.ts"
     }
   },
@@ -21,8 +24,8 @@
     "load html"
   ],
   "scripts": {
-    "build": "unbuild",
-    "stub": "unbuild --stub"
+    "dev": "tsup --watch",
+    "build": "tsup --dts"
   },
   "dependencies": {
     "@plasticine-islands/types": "workspace:*"

@@ -6,7 +6,7 @@ import vitePluginPlasticineIslandsConventionalBasedRouting from '@plasticine-isl
 import vitePluginDevServerHtml from '@plasticine-islands/vite-plugin-dev-server-html'
 import vitePluginPlasticineIslandsSiteConfig from '@plasticine-islands/vite-plugin-plasticine-islands-site-config'
 
-import { CLIENT_ENTRY_PATH, DEV_SERVER_HTML_PATH } from '../constants'
+import { BUNDLESS_PATH, CLIENT_ENTRY_PATH, DEV_SERVER_HTML_PATH } from '../constants'
 
 interface ResolveVitePluginsOptions {
   resolvedConfig: ResolvedConfig
@@ -25,6 +25,8 @@ export function resolveVitePlugins(options: ResolveVitePluginsOptions): PluginOp
     vitePluginDevServerHtml({
       htmlPath: DEV_SERVER_HTML_PATH,
       clintEntryPath: CLIENT_ENTRY_PATH,
+      loadDefaultHtmlOnError: true,
+      filesToWatch: [BUNDLESS_PATH],
     }),
 
     // 通过虚拟模块让前端应用使用配置文件中的 SiteConfig 数据

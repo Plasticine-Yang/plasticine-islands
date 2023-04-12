@@ -11,4 +11,7 @@ export interface VitePluginDevServerHtmlOptions {
 
   /** @description 客户端运行时代码的入口，传入该配置项后会在生成的 html 中注入 script 标签加载客户端运行时代码 */
   clintEntryPath?: string
+
+  /** @description 配置在变化时热更新的文件 */
+  filesToWatch?: string[]
 }

@@ -5,13 +5,16 @@
   "description": "cli service of @plasticine-islands",
   "type": "module",
   "license": "MIT",
+  "files": [
+    "./dist"
+  ],
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
@@ -23,8 +26,8 @@
     "cli-service"
   ],
   "scripts": {
-    "build": "unbuild",
-    "stub": "unbuild --stub"
+    "dev": "tsup --watch",
+    "build": "tsup --dts"
   },
   "dependencies": {
     "unconfig": "^0.3.7",
