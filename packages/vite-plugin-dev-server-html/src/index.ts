@@ -5,7 +5,7 @@ import { resolve } from 'path'
 
 import type { VitePluginDevServerHtmlOptions } from '@plasticine-islands/types'
 
-const DEFAULT_HTML_PATH = resolve(__dirname, 'default.html')
+const DEFAULT_HTML_PATH = resolve(__dirname, '../bundless/default.html')
 
 const DEFAULT_OPTIONS: VitePluginDevServerHtmlOptions = {
   htmlPath: DEFAULT_HTML_PATH,
@@ -16,12 +16,14 @@ const DEFAULT_OPTIONS: VitePluginDevServerHtmlOptions = {
  * @description 为 vite 开发环境服务器加载 html 作为入口
  */
 export default function vitePluginDevServerHtml(options: VitePluginDevServerHtmlOptions = DEFAULT_OPTIONS): Plugin {
-  const { htmlPath, loadDefaultHtmlOnError, clintEntryPath } = options
+  const { htmlPath, loadDefaultHtmlOnError, clintEntryPath, filesToWatch } = options
 
   return {
     name: 'vite-plugin-dev-server-html',
     apply: 'serve',
     configureServer(server) {
+      filesToWatch && server.watcher.add(filesToWatch)
+
       // 需要在 vite 内置的 middleware 运行完后再运行该 middleware
       return () => {
         server.middlewares.use(async (req, res, next) => {
@@ -66,6 +68,16 @@ export default function vitePluginDevServerHtml(options: VitePluginDevServerHtml
       return {
         html,
         tags,
+      }
+    },
+    handleHotUpdate(ctx) {
+      const include = (filePath: string) =>
+        filesToWatch?.some((file) => {
+          return file.includes(filePath) || filePath.startsWith(file)
+        }) ?? false
+
+      if (include(ctx.file)) {
+        ctx.server.restart()
       }
     },
   }
