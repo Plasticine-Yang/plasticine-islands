@@ -1,5 +1,9 @@
+import type { ResolvedConfig } from '../config'
+
 /** @description vite-plugin-dev-server-html-options 插件参数 */
 export interface VitePluginDevServerHtmlOptions {
+  resolvedConfig: ResolvedConfig
+
   /** @description 要加载的 html 文件路径 */
   htmlPath: string
 

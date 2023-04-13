@@ -12,7 +12,7 @@ export default function vitePluginPlasticineIslandsSiteConfig(
   options: VitePluginPlasticineIslandsSiteConfigOptions,
 ): Plugin {
   const { resolvedConfig, onDevServerRestart } = options
-  const { root, command, siteConfig, configFilePath } = resolvedConfig
+  const { root, command, siteConfig, configFilePath, filesToWatch } = resolvedConfig
 
   return {
     name: 'plasticine-islands-site-config',
@@ -35,15 +35,28 @@ export default function vitePluginPlasticineIslandsSiteConfig(
       }
     },
 
-    // 配置文件更新时重启 Dev Server
+    configureServer(server) {
+      server.watcher.add(filesToWatch)
+    },
+
+    // 配置文件 & 全局配置的监听文件更新时重启 Dev Server
     async handleHotUpdate(ctx) {
-      const filesToWatch = [configFilePath]
-      const include = (filePath: string) => filesToWatch.some((file) => file.includes(filePath))
+      const _filesToWatch = [configFilePath, ...filesToWatch]
+      const include = (filePath: string) => _filesToWatch.some((file) => filePath.includes(file))
 
       if (include(ctx.file)) {
-        console.log(chalk.cyan(`\n配置文件 ${relative(root, configFilePath)} 改动，重启开发服务器...\n`))
+        if (ctx.file.includes(configFilePath)) {
+          log(relative(root, configFilePath), '配置文件改变，重启开发服务器...')
+        } else {
+          log(ctx.file, '全局配置的监听文件发生变化，重启开发服务器...')
+        }
         await onDevServerRestart()
       }
     },
   }
+}
+
+function log(filePath: string, info: string) {
+  console.log(`\n${chalk.bgGreen(` File Changed `)} ${chalk.greenBright(`${filePath}`)}`)
+  console.log(chalk.cyan(`${info}\n`))
 }

@@ -12,7 +12,7 @@ import type {
   SiteConfig,
 } from '@plasticine-islands/types'
 
-import { DEFAULT_OUT_DIRECTORY_NAME, DEFAULT_TITLE } from './constants'
+import { DEFAULT_OUT_DIRECTORY_NAME, DEFAULT_TITLE, FILES_TO_WATCH } from './constants'
 
 export async function resolveConfig(root: string, command: CliCommand): Promise<ResolvedConfig> {
   const loadedConfig = await loadConfig<PlasticineIslandsConfig | undefined>({
@@ -34,6 +34,7 @@ export async function resolveConfig(root: string, command: CliCommand): Promise<
     configFilePath: sources.at(0) ?? '',
     buildConfig: resolveBuildConfig(config),
     siteConfig: resolveSiteConfig(config),
+    filesToWatch: FILES_TO_WATCH,
   }
 }
 

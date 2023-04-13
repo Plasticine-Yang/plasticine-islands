@@ -39,4 +39,7 @@ export interface ResolvedConfig {
 
   /** @description 站点配置 - 会暴露给前端应用 */
   siteConfig: DeepRequired<SiteConfig>
+
+  /** @description 变化时需要重启 Dev Server 的文件 */
+  filesToWatch: string[]
 }
