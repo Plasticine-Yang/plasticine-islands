@@ -1,0 +1,49 @@
+{
+  "name": "@plasticine-islands/vite-plugin-mdx",
+  "version": "0.0.3",
+  "author": "Plasticine-Yang",
+  "description": "A vite plugin to load mdx files",
+  "type": "module",
+  "files": [
+    "./dist"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "vite plugin",
+    "mdx"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup --dts"
+  },
+  "dependencies": {
+    "@mdx-js/rollup": "^2.3.0",
+    "@plasticine-islands/types": "workspace:*",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-slug": "^5.1.0",
+    "remark-gfm": "^3.0.1"
+  },
+  "peerDependencies": {
+    "vite": "^4.1.4"
+  },
+  "devDependencies": {
+    "vite": "^4.1.4"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "rollup"
+      ]
+    }
+  }
+}
