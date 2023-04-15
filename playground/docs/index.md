@@ -11,3 +11,7 @@
 3. how are u
 
 literals www.example.com, https://example.com and contact@example.com
+
+```ts
+console.log('hello world')
+```
