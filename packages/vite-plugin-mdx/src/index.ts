@@ -4,6 +4,8 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import type { Plugin } from 'vite'
 
+import { rehypePreWrapper } from './plugins'
+
 export default function vitePluginMdx(): Plugin {
   return rollupPluginMdx({
     remarkPlugins: [
@@ -28,6 +30,9 @@ export default function vitePluginMdx(): Plugin {
           },
         } as RehypeAutolinkHeadingsOptions,
       ],
+
+      // 将 markdown 代码块转换成的 html pre 元素节点 wrap 到 div 里，并带上代码块对应的语言
+      rehypePreWrapper,
     ],
   })
 }

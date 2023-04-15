@@ -31,12 +31,19 @@
     "@plasticine-islands/types": "workspace:*",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
-    "remark-gfm": "^3.0.1"
+    "remark-gfm": "^3.0.1",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2"
   },
   "peerDependencies": {
     "vite": "^4.1.4"
   },
   "devDependencies": {
+    "@types/hast": "^2.3.4",
+    "rehype-format": "^4.0.1",
+    "rehype-stringify": "^9.0.3",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
     "vite": "^4.1.4"
   },
   "pnpm": {
