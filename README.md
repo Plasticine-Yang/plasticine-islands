@@ -11,6 +11,13 @@
 - 配置文件热更新
 - 约定式路由
 
+### Markdown & MDX
+
+- 支持使用 `md` & `.mdx`
+- 支持 GFM
+- 支持为 markdown 标题生成锚点链接
+- 支持代码块语法高亮
+
 ## Usage
 
 ```shell
