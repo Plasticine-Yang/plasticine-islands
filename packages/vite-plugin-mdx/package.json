@@ -29,9 +29,11 @@
   "dependencies": {
     "@mdx-js/rollup": "^2.3.0",
     "@plasticine-islands/types": "workspace:*",
+    "hast-util-from-html": "^1.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
+    "shiki": "^0.14.1",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.2"
   },

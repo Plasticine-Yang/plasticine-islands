@@ -2,6 +2,8 @@ import type { Element, Root } from 'hast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
+import { isCodeElement, parseCodeElement } from './shared'
+
 /**
  * 为 markdown 代码块转换成的 html 中的 pre 标签进行修改
  *
@@ -33,8 +35,7 @@ export const rehypePreWrapper: Plugin<[], Root> = () => {
       if (isCodeElement(node) && !node.data?.visited) {
         // 2. 解析出代码块的语言类型
         const codeElement = node.children.at(0) as Element
-        const codeElementClassName = codeElement.properties?.className?.toString() || ''
-        const codeLanguageType = codeElementClassName.split('-').at(1) || ''
+        const { codeElementClassName, codeLanguageType } = parseCodeElement(codeElement)
 
         // 3. 修改 pre 元素节点的结构 - 先拷贝一个 node 出来，再对 node 进行修改
         const clonedNode: Element = {
@@ -71,10 +72,4 @@ export const rehypePreWrapper: Plugin<[], Root> = () => {
       }
     })
   }
-}
-
-/** @description 判断元素节点是否是 markdown 代码块转换而来的 html ast 节点 */
-function isCodeElement(element: Element) {
-  const firstChild = element.children.at(0)
-  return element.tagName === 'pre' && firstChild?.type === 'element' && firstChild.tagName === 'code'
 }
