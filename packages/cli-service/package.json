@@ -26,8 +26,8 @@
     "cli-service"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsup --watch",
-    "build": "cross-env NODE_ENV=production tsup --dts"
+    "dev": "tsup --watch",
+    "build": "tsup --dts"
   },
   "dependencies": {
     "unconfig": "^0.3.7",

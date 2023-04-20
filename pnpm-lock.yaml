@@ -78,6 +78,7 @@ importers:
       '@plasticine-islands/types': workspace:*
       '@plasticine-islands/vite-plugin-conventional-based-routing': workspace:*
       '@plasticine-islands/vite-plugin-dev-server-html': workspace:*
+      '@plasticine-islands/vite-plugin-mdx': workspace:*
       '@plasticine-islands/vite-plugin-plasticine-islands-site-config': workspace:*
       '@types/ejs': ^3.1.2
       '@types/fs-extra': ^11.0.1
@@ -97,6 +98,7 @@ importers:
       '@plasticine-islands/types': link:../types
       '@plasticine-islands/vite-plugin-conventional-based-routing': link:../vite-plugin-conventional-based-routing
       '@plasticine-islands/vite-plugin-dev-server-html': link:../vite-plugin-dev-server-html
+      '@plasticine-islands/vite-plugin-mdx': link:../vite-plugin-mdx
       '@plasticine-islands/vite-plugin-plasticine-islands-site-config': link:../vite-plugin-plasticine-islands-site-config
       '@vitejs/plugin-react': 3.1.0_vite@4.1.4
       ejs: 3.1.8
