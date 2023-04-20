@@ -69,16 +69,6 @@ export default function vitePluginDevServerHtml(options: VitePluginDevServerHtml
         tags,
       }
     },
-    handleHotUpdate(ctx) {
-      const include = (filePath: string) =>
-        filesToWatch?.some((file) => {
-          return filePath.includes(file) || filePath.includes(root)
-        }) ?? false
-
-      if (include(ctx.file)) {
-        ctx.server.restart()
-      }
-    },
   }
 }
 
